@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "./routes";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "./redux/actions/auth.actions"
+
 
 function App() {
+  const dispatch = useDispatch();
+  const isAuthorized = useSelector((state) => state.auth.isAuthorized);
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken && accessToken !== "undefined") {
+      dispatch(authActions.getCurrentUser(accessToken));
+    }
+    else {
+      dispatch(authActions.logout());
+    }
+  }, [dispatch]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {isAuthorized === null ? (
+        <div>loading</div>
+      ) : (
+          <Router>
+            <Routes />
+          </Router>
+        )}
+    </>
   );
 }
 

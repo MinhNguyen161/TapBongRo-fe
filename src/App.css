@@ -1,38 +1,330 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Cabin+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Righteous");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
+
+.Container {
+  margin: 0;
+  padding: 0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.register_input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.about {
+  /* height: 100vh; */
+  /* background-color: rgb(255, 255, 255); */
+  /* background-image: url("https://data.whicdn.com/images/307717914/original.png"); */
+  background-position: center; /* Center the image */
+}
+.about h1 {
+  color: black;
   text-align: center;
+  margin-top: 30px;
+  font-family: "Montserrat";
+}
+.page {
+  margin: 0;
+  padding: 0;
+}
+.spacing {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
+.ava {
+  height: 400px;
+}
+.about_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer {
+  color: whitesmoke;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 3px;
+  background-color: black;
+  height: 6vh;
+}
+/* 
+FIX LAI CHO NAY VI TI NUA THEM FOOTER NUA
+this suppose to be copyright
+*/
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  height: 50px;
+}
+.icon-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  padding: 100px;
+  position: absolute;
+  top: 0;
   pointer-events: none;
+  /* Kho hieu vcl */
+}
+.home_page {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-image: url("./bg.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.main_page_logo {
+  height: 100%;
+  opacity: 0.9;
+  margin: 0;
+  padding: 0;
+}
+.main_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav_content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
+.nav_bar {
+  min-height: 5vh;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  background-color: #333236;
+}
+.left_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right_content {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 0;
+  font-size: larger;
+  /* background-color: rgb(32, 17, 17); */
+}
+.nav_bar_links {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0;
+  /* background-color: rgb(32, 17, 17); */
+}
+.nav_bar_links li {
+  list-style: none;
+  align-items: center;
+  display: flex;
+}
+.nav_bar_links span {
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.logo {
+  width: 80px;
+}
+.logo_cart {
+  width: 30px;
+}
+.logo_user {
+  width: 30px;
+}
+.img_bg {
+  /* position: absolute; */
+  height: 80%;
+  background-image: url("./minhmeoblacknwhite.png");
+  /* opacity: 0.8; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+.join_us_nav {
+  background-color: #e76969 !important;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* background-color: #ff5b16 !important; */
+}
+.join_us_content {
+  letter-spacing: 3px;
+  color: black;
+  text-decoration: dashed;
+  width: 100%;
+}
+.no_padding {
+  padding: 0px;
+  /* background: rgb(255, 255, 255);
+  background: linear-gradient(
+    144deg,
+    rgba(255, 255, 255, 1) 16%,
+    rgba(255, 220, 220, 1) 89%,
+    rgba(226, 157, 62, 1) 100%,
+    rgba(255, 0, 0, 1) 100%
+  ); */
+}
+.blog_container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+._blog {
+  width: 100%;
+}
+.featured {
+  padding: 0px 45px;
+}
+.featured_item {
+  display: flex;
+  overflow: auto;
+  white-space: nowrap;
+}
+.product-img {
+  width: 450px;
+}
+.sizes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+}
+.sizes_contain {
+  display: flex;
+}
+.product-lists {
+  display: flex;
+}
+.product-imgg {
+  width: 100%;
+}
+.collapse {
+  height: 100%;
+}
+.Nav_bar_Col {
+  display: flex;
+  flex-direction: row;
+}
+.sign_in_as {
+  display: flex;
+  flex-direction: column;
+}
+.sign_in_button {
+  background: bottom;
+  color: aliceblue;
+}
+
+button#user-button {
+  background-color: transparent;
+  border: none;
+}
+.carts {
+  margin-left: 15px;
+}
+
+.jumbo_blog_merch {
+  background-image: url("https://www.courtsoftheworld.com/blog/wp-content/uploads/2020/06/Venice-Beach-unsplash-scaled.jpg");
+  background-position: bottom;
+  background-size: cover;
+}
+.jumbo_blog_blog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("https://pbs.twimg.com/media/C5j7s96VMAAZOlS.jpg");
+  background-position: center;
+  background-size: cover;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.big_text_jumbo {
+  color: white;
+  font-size: 100px;
+  letter-spacing: 3px;
+  font-family: "Lobster";
+  margin-top: 15px;
+  padding-top: 15px;
+  width: fit-content;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.no_decor_italics a {
+  text-decoration: none;
+  color: white;
+}
+.jumbo_blog_about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("https://www.courtsoftheworld.com/blog/wp-content/uploads/2020/06/Venice-Beach-unsplash-scaled.jpg");
+  background-position: bottom;
+  background-size: cover;
+}
+/* https://pbs.twimg.com/media/C5j7s96VMAAZOlS.jpg */
+.jumbo_blog_merch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("https://images.complex.com/complex/images/c_crop,h_807,w_1435,x_5,y_3/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/eaev69ko4cboprpmmzv8/kanye-merch-lead");
+  background-position: center;
+  background-size: auto;
+}
+.loading_body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./loading.gif);
+}
+.jumbo_blog_cart {
+  background-image: url("https://img.budgettravel.com/_seoImage/foreign-currency.jpg?mtime=20190709095321");
 }
