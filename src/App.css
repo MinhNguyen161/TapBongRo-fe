@@ -182,8 +182,8 @@ this suppose to be copyright
 }
 .img_bg {
   /* position: absolute; */
-  height: 80%;
-  background-image: url("./minhmeoblacknwhite.png");
+  height: 100%;
+  background-image: url("./minhmeo.png");
   /* opacity: 0.8; */
   background-position: center;
   background-repeat: no-repeat;
@@ -274,11 +274,6 @@ button#user-button {
   margin-left: 15px;
 }
 
-.jumbo_blog_merch {
-  background-image: url("https://i.pinimg.com/originals/15/26/ba/1526ba78cd34f1638ed6e9cc352aff35.jpg");
-  background-position: bottom;
-  background-size: cover;
-}
 .jumbo_blog_blog {
   display: flex;
   justify-content: center;
@@ -317,9 +312,9 @@ button#user-button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url("https://images.complex.com/complex/images/c_crop,h_807,w_1435,x_5,y_3/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/eaev69ko4cboprpmmzv8/kanye-merch-lead");
+  background-image: url("https://lh3.google.com/pw/ACtC-3e_hMkeUbuo411HjhTSNGi_FQIVGBv-Z-42m_xSIV5Rc-Zy7tn5e7qLtvlpBEfFe6VYEMC6HK35SlvWN3L5oD3YHbfvkYk=w988-h741-no?authuser=0");
   background-position: center;
-  background-size: auto;
+  background-size: cover;
 }
 .loading_body {
   height: 100vh;

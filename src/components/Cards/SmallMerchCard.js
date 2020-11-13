@@ -8,8 +8,8 @@ const SmallMerchCard = ({ merch, handleClick }) => {
             <Card.Img
                 variant="top"
                 src={
-                    merch?.images?.length
-                        ? merch.images[0]
+                    merch?.pictureUrl?.length
+                        ? merch.pictureUrl[0]
                         : "https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/b541fd41-7304-46bc-8b52-0fdd3a2ce739/air-vapormax-2020-flyknit-shoe-5xSzzZ.jpg"
                 }
                 className="product-imgg"

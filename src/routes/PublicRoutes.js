@@ -17,6 +17,7 @@ import LoadingPage from "../components/LoadingPage";
 import AddEditBlogPage from "../components/addEditPage/AddEditBlogs";
 import FavPage from "../containers/FavPage";
 import CategoryPage from "../components/RandomPage/CategoryPage";
+import AddEditProductPage from "../components/addEditPage/AddEditProducts"
 
 
 const PublicRoutes = () => {
@@ -24,8 +25,21 @@ const PublicRoutes = () => {
         <Container fluid className="page" >
             {/* <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} /> */}
             <Switch>
+                <AdminRoute exact path="/blogs/add" component={AddEditBlogPage} />
+                <AdminRoute
+                    exact
+                    path="/blogs/edit/:id"
+                    component={AddEditBlogPage}
+                />
+                <AdminRoute exact path="/merch/add" component={AddEditProductPage} />
+                <AdminRoute
+                    exact
+                    path="/merch/edit/:id"
+                    component={AddEditBlogPage}
+                />
                 <Route exact path="/login" component={LoginPage} />
                 <Route exact path="/register" component={RegisterPage} />
+                <Route exact path="/blogs/:id" component={BlogDetailPage} />
                 <Route exact path="/blogs" component={BlogPage} />
                 <Route exact path="/favorites" component={FavPage} />
                 <Route exact path="/about" component={AboutPage} />
@@ -36,13 +50,7 @@ const PublicRoutes = () => {
                 <Route exact path="/category/:id" component={BlogPage} />
                 <Route exact path="/loading" component={LoadingPage} />
 
-                <AdminRoute exact path="/blogs/add" component={AddEditBlogPage} />
-                <AdminRoute
-                    exact
-                    path="/blogs/edit/:id"
-                    component={AddEditBlogPage}
-                />
-                <Route exact path="/blogs/:id" component={BlogDetailPage} />
+
 
                 <Route exact path="/" component={HomePage} />
                 {/* <Route exact path="/blogs/:id" component={BlogDetailPage} />

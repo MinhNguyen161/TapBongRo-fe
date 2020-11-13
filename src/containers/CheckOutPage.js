@@ -24,7 +24,7 @@ const CheckOutPage = () => {
     }, [dispatch, currentUser?._id]);
     let total = 0
     const getTotal = () => {
-        total = carts.reduce((sum, a) => sum + a.quantity * a.itemId.price, 0)
+        total = carts.reduce((sum, a) => sum + a.quantity * a.itemId?.price, 0)
     }
     getTotal()
     const addToFav = (product) => {

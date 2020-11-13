@@ -10,6 +10,8 @@ import {
 } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import { blogActions, routeActions } from "../../redux/actions"
+import NavBarJoinUs from "../NavBars/NavBarJoinUs";
+import NavBarO from "../NavBars/NavBarRo";
 
 const AddEditBlogPage = () => {
     const category = ["Dribbling", "Shooting", "Screens", "Situations", "Isolation", "Finishing", "HoopCourt", "Story"]
@@ -31,7 +33,7 @@ const AddEditBlogPage = () => {
     useEffect(() => {
         if (blogId) {
             if (!selectedBlog) {
-                dispatch(blogActions.getSingleBlog(blogId));
+                dispatch(blogActions.getDetail(blogId));
             }
             setFormData((formData) => ({
                 ...formData,
@@ -48,6 +50,7 @@ const AddEditBlogPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const { title, content, images, tag } = formData;
+        console.log("meom moe", formData)
         if (addOrEdit === "Add") {
             dispatch(blogActions.createNewBlog(title, content, images, tag));
         } else if (addOrEdit === "Edit") {
@@ -78,7 +81,9 @@ const AddEditBlogPage = () => {
     }, [redirectTo, dispatch, history]);
 
     return (
-        <Container>
+        <Container fluid className="no_padding">
+            <NavBarO />
+            <NavBarJoinUs />
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <Form onSubmit={handleSubmit}>
@@ -111,10 +116,14 @@ const AddEditBlogPage = () => {
                         </Form.Group>
                         <Form.Control
                             as="select"
-                            placeholder="Tag"
+                            type="text"
+                            required
+                            placeholder="tag"
+                            name="tag"
                             value={formData.tag}
+                            onChange={handleChange}
                         >
-                            {category.map((name) => <option> {name}</option>)}
+                            {category.map((name) => <option value={name}> {name}</option>)}
                         </Form.Control>
                         <ButtonGroup className="d-flex mb-3">
                             {loading ? (

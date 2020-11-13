@@ -30,7 +30,7 @@ const BlogCard = ({ blog, handleClick, width, downVote, upVote }) => {
                     </span>
                 </small>
             </Card.Footer>
-            <div className="voting">
+            {/* <div className="voting">
                 <Button
                     variant="warning"
                     size="sm"
@@ -42,7 +42,7 @@ const BlogCard = ({ blog, handleClick, width, downVote, upVote }) => {
                     size="sm"
                     onClick={() => downVote(blog._id)}
                 >DOWNVOTE</Button>
-            </div>
+            </div> */}
         </Card>
     );
 };

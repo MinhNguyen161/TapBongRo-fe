@@ -46,10 +46,18 @@ const MerchDetailPage = () => {
             <NavBarJoinUs />
 
             <Container>
-                <Button variant="light" onClick={handleGoBackClick}>
-                    <a className="btn btn-dark rounded-pill py-2 btn-block"> Back </a>
-
-                </Button>
+                <Container className="button_control">
+                    <div className="back_button">
+                        <a onClick={handleGoBackClick} className="btn btn-dark rounded-pill py-2 btn-block">Back</a>
+                    </div>
+                    <div className="edit_button">
+                        {product?._id &&
+                            <Link to={`/merch/edit/${product._id}`}>
+                                <a className="btn btn-dark rounded-pill py-2 btn-block">Edit</a>
+                            </Link>
+                        }
+                    </div>
+                </Container>
 
                 <Row>
                     <Col lg={7}>

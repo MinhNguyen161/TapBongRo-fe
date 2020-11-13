@@ -70,10 +70,10 @@ const getDetail = (id) => async (dispatch) => {
         console.log(err);
     }
 };
-const getBlogs = (activePage, limit = 5) => async (dispatch) => {
+const getBlogs = (activePage, id, limit = 5,) => async (dispatch) => {
     dispatch({ type: types.GET_BLOG_REQUEST, payload: null });
     try {
-        const res = await api.get(`/blogs/all?page=${activePage}&limit=${limit}`);
+        const res = await api.get(`/blogs/all?page=${activePage}&limit=${limit}&tag=${id}`);
         dispatch({ type: types.GET_BLOG_SUCCESS, payload: res.data.data });
         console.log("Blogs List", res.data.data);
     } catch (err) {

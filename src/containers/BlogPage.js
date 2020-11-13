@@ -21,7 +21,7 @@ const BlogPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     useEffect(() => {
-        dispatch(blogActions.getBlogs(pageNum));
+        dispatch(blogActions.getBlogs(pageNum, params.id));
     }, [dispatch, pageNum])
     const onClickBlogs = (id) => {
         history.push(`/blogs/${id}`);
@@ -46,7 +46,7 @@ const BlogPage = () => {
             <NavBarJoinUs />
             <Jumbotron className="text-center jumbo_blog_blog">
 
-                <h1 className="big_text_jumbo">Hoopstudy</h1>
+                <h1 className="big_text_jumbo">{params.id}</h1>
             </Jumbotron>
             <Container>
                 <div className="no_decor_italics">
@@ -57,7 +57,6 @@ const BlogPage = () => {
                     <Link to={`/category/${params.id}`}> {params.id}</Link>
                 </div>
             </Container>
-
             <Container className="blog_container">
 
                 <PaginationBar

@@ -4,7 +4,7 @@ import { message } from "antd";
 import { routeActions } from "./route.actions"
 
 
-const createNewProduct = (name, price, clothing_type, quantity, color, available_size, description, measures, redirectTo = "__GO_BACK__") => async (dispatch) => {
+const createNewProduct = (name, price, clothing_type, quantity, color, available_size, description, measures, pictureUrl, redirectTo = "__GO_BACK__") => async (dispatch) => {
 
     dispatch({ type: types.CREATE_PRODUCT_REQUEST, payload: null });
     try {
@@ -14,7 +14,7 @@ const createNewProduct = (name, price, clothing_type, quantity, color, available
             description,
             measures,
         }
-        const res = await api.post("/products", { name, price, clothing_type, quantity, product_info });
+        const res = await api.post("/products", { name, price, clothing_type, quantity, product_info, pictureUrl });
         dispatch({
             type: types.CREATE_PRODUCT_SUCCESS,
             payload: res.data.data,
@@ -29,7 +29,7 @@ const createNewProduct = (name, price, clothing_type, quantity, color, available
     }
 };
 
-const updateProduct = (productId, name, price, clothing_type, quantity, color, available_size, description, measures, redirectTo = "__GO_BACK__") => async (dispatch) => {
+const updateProduct = (productId, name, price, clothing_type, quantity, color, available_size, description, measures, pictureUrl, redirectTo = "__GO_BACK__") => async (dispatch) => {
     dispatch({ type: types.UPDATE_PRODUCT_REQUEST, payload: null });
     try {
         const product_info = {
@@ -38,7 +38,7 @@ const updateProduct = (productId, name, price, clothing_type, quantity, color, a
             description,
             measures,
         }
-        const res = await api.put(`/products/${productId}`, { name, price, clothing_type, quantity, product_info, });
+        const res = await api.put(`/products/${productId}`, { name, price, clothing_type, quantity, product_info, pictureUrl });
         dispatch({
             type: types.UPDATE_PRODUCT_SUCCESS,
             payload: res.data.data,
