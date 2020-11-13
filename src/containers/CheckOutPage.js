@@ -5,7 +5,7 @@ import NavBarJoinUs from "../components/NavBars/NavBarJoinUs"
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Container, Jumbotron, Row, Col, Table, Button } from 'react-bootstrap'
-import { cartActions } from "../redux/actions/cart.actions"
+import { cartActions } from "../redux/actions/"
 import { productActions } from "../redux/actions/product.actions"
 
 import LoadingPage from '../components/LoadingPage';
@@ -30,6 +30,10 @@ const CheckOutPage = () => {
     const addToFav = (product) => {
         dispatch(productActions.addRemoveFromFav(product.itemId?._id))
 
+    }
+    const checkOut = () => {
+        dispatch(cartActions.checkOut())
+        history.push('/')
     }
     const removeItem = (product, index) => {
         dispatch(cartActions.addItem(product.itemId?._id, 0 - product.quantity))
@@ -139,7 +143,7 @@ const CheckOutPage = () => {
                                 <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Total</strong>
                                     <h4 className="font-weight-bold">${parseInt((total + 10) * 100) / 100}</h4>
                                 </li>
-                            </ul><a href="#" className="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                            </ul><a onClick={() => checkOut()} className="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
                         </div>
                     </div>
 
