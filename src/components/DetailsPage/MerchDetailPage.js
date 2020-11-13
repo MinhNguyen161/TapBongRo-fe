@@ -22,8 +22,9 @@ const MerchDetailPage = () => {
             dispatch(productActions.getDetail(params.id));
         }
     }, [dispatch, params]);
-    const addToFavorites = (e) => {
-        console.log("meo", "adding favorites")
+    const addToFavorites = (id) => {
+        dispatch(productActions.addRemoveFromFav(id))
+        console.log(id, "adding favorites")
     }
 
     const handleGoBackClick = (e) => {
@@ -37,14 +38,19 @@ const MerchDetailPage = () => {
         );
     };
     if (product === null) return (<div> Loading</div>)
+    if (loading) return (<div> Loading</div>)
     return (
         <>
 
             <NavBarO />
             <NavBarJoinUs />
 
-            <Button onClick={handleGoBackClick}>  Back </Button>
             <Container>
+                <Button variant="light" onClick={handleGoBackClick}>
+                    <a className="btn btn-dark rounded-pill py-2 btn-block"> Back </a>
+
+                </Button>
+
                 <Row>
                     <Col lg={7}>
                         <Image src={product.pictureUrl} fluid />                    </Col>
@@ -73,43 +79,44 @@ const MerchDetailPage = () => {
 
                             </Form.Item>
                             <span></span>
-                            <Row className="">
-                                <Button type="primary" htmlType="submit">
-                                    Add item to Cart
-                                    </Button>
-                                {/* ANCHOR sua onClick */}
-                                <Button htmlType="button" onClick={() => addToFavorites}>
-                                    Add item to favorites
-                                    </Button>
+                            <Row className="flex-column">
+                                <Button variant="light" type="primary" htmlType="submit">
+                                    <a className="btn btn-danger rounded-pill py-2 btn-block">Add to Cart <img src="/images/cart.png" alt="logo" className="logo_cart" /></a>
+                                </Button>
+                                <Button variant="light" htmlType="button" onClick={() => addToFavorites(product._id)}>
+                                    <a className="btn btn-danger rounded-pill py-2 btn-block"> Add to favorites <img src="/images/heart.png" alt="logo" className="logo_user" /> </a>
+                                </Button>
                             </Row>
                             <Divider dashed />
                         </Form>
-                        <p> {product.product_info.description}</p>
-                        <p> Measures: {product.product_info.measures}</p>
+                        <Container>                        <p> {product.product_info.description}</p>
+                            <p> Measures: {product.product_info.measures}</p>
 
-                        <Accordion defaultActiveKey="0">
-                            <Card border="light">
-                                <Accordion.Toggle as={Card.Header} eventKey="0">
-                                    <h2> Size & Fit</h2>
-                                </Accordion.Toggle>
-                                <Accordion.Collapse eventKey="0">
-                                    <Card.Body>
-                                        <ol>
-                                            <li> For easier entry, we recommend unlacing the top 4 eyelets and slightly loosening the laces farther down </li>
-                                            <li>  <a href="https://www.nike.com/size-fit/unisex-footwear-mens-based"> Size Guide</a></li>
-                                        </ol>
-                                    </Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                            <Card border="light">
-                                <Accordion.Toggle as={Card.Header} eventKey="1">
-                                    <h2> Shipping & Return Policy</h2>
-                                </Accordion.Toggle>
-                                <Accordion.Collapse eventKey="1">
-                                    <Card.Body>Free standard shipping and free 60-day returns for Nike Members. Learn more.</Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                        </Accordion>
+                            <Accordion defaultActiveKey="0">
+                                <Card border="light" >
+                                    <Accordion.Toggle className="no_padding_card" as={Card.Header} eventKey="0">
+                                        <h2> Size & Fit</h2>
+                                    </Accordion.Toggle>
+                                    <Accordion.Collapse eventKey="0">
+                                        <Card.Body>
+                                            <ol>
+                                                <li> For easier entry, we recommend unlacing the top 4 eyelets and slightly loosening the laces farther down </li>
+                                                <li>  <a href="https://www.nike.com/size-fit/unisex-footwear-mens-based"> Size Guide</a></li>
+                                            </ol>
+                                        </Card.Body>
+                                    </Accordion.Collapse>
+                                </Card>
+                                <Card border="light">
+                                    <Accordion.Toggle className="no_padding_card" as={Card.Header} eventKey="1">
+                                        <h2> Shipping & Return Policy</h2>
+                                    </Accordion.Toggle>
+                                    <Accordion.Collapse eventKey="1">
+                                        <Card.Body>Free standard shipping and free 60-day returns for Nike Members. Learn more.</Card.Body>
+                                    </Accordion.Collapse>
+                                </Card>
+                            </Accordion>
+                        </Container>
+
                     </Col>
                 </Row>
             </Container>

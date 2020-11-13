@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Row, Col, CardColumns } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
 import Moment from "react-moment";
 import { blogActions } from "../../redux/actions/blog.actions"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NavBarJoinUs from "../NavBars/NavBarJoinUs";
 import NavBarO from "../NavBars/NavBarRo";
 import ReviewList from "../ReviewList";
 import LoadingPage from "../LoadingPage";
 import ReviewForm from "../ReviewForm";
 import SearchPage from "../SearchBar";
-import BlogCard from "../Cards/BlogCard";
+import BlogCardAlt from "../Cards/BlogCardAlt";
 
 
 
@@ -39,9 +37,11 @@ const BlogDetailPage = () => {
         setReviewText("");
     }
 
+
     useEffect(() => {
         if (params?.id) {
             dispatch(blogActions.getDetail(params.id));
+            dispatch(blogActions.getBlogs(pageNum, 2));
         }
     }, [dispatch, params]);
 
@@ -52,23 +52,9 @@ const BlogDetailPage = () => {
 
     return (
         <>
-            <NavBarJoinUs />
             <NavBarO />
+            <NavBarJoinUs />
 
-            <div className="d-flex justify-content-between">
-                <Button onClick={handleGoBackClick}>
-                    Back
-                </Button>
-                {blog?._id && currentUser?._id === blog?.author ? (
-                    <Link to={`/blogs/edit/${blog._id}`}>
-                        <Button variant="primary">
-                            Edit
-                        </Button>
-                    </Link>
-                ) : (
-                        <> You can not edit</>
-                    )}
-            </div>
             {loading ? (
                 <LoadingPage />
             ) : (
@@ -77,7 +63,21 @@ const BlogDetailPage = () => {
                             <Container>
                                 <Row>
                                     <Col lg={9}>
-                                        <div className="mb-5">
+                                        <Container className="button_control">
+                                            <div className="back_button">
+                                                <a onClick={handleGoBackClick} className="btn btn-dark rounded-pill py-2 btn-block">Back</a>
+                                            </div>
+                                            <div className="edit_button">
+                                                {blog?._id && currentUser?._id === blog?.author ? (
+                                                    <Link to={`/blogs/edit/${blog._id}`}>
+                                                        <a className="btn btn-dark rounded-pill py-2 btn-block">Edit</a>
+                                                    </Link>
+                                                ) : (
+                                                        <> You can not edit</>
+                                                    )}
+                                            </div>
+                                        </Container>
+                                        <div className="">
                                             <h4>{blog.title}</h4>
                                             <span className="text-muted">
                                                 <Moment fromNow>{blog.createdAt}</Moment>
@@ -86,6 +86,7 @@ const BlogDetailPage = () => {
                                             <hr />
                                             <span>{blog.content}</span>
                                             <hr />
+                                            <span>+ {blog.likeCount} - </span>
                                             <ReviewList reviews={blog.reviews} />
                                         </div>
                                         {isAuthorized && (
@@ -99,13 +100,28 @@ const BlogDetailPage = () => {
                                     </Col>
 
                                     <Col lg={3}>
+                                        <Row className="other_blogs">
+                                            <SearchPage />
+                                            <div className="text-center width">
+                                                <h2> Recent Posts: </h2>
 
-                                        <SearchPage />
-                                        <h2> Recent Posts: </h2>
-                                        <Row>
+                                            </div>
                                             <Container className="recent_post">
                                                 {blogs.map((blog) => (
-                                                    <BlogCard
+                                                    <BlogCardAlt
+                                                        blog={blog}
+                                                        key={blog._id}
+                                                        handleClick={onClickBlogs}
+                                                        width="15rem"
+                                                    />
+                                                ))}
+                                            </Container>
+                                            <div className="text-center width">
+                                                <h2> Popular Posts: </h2>
+
+                                            </div>                                            <Container className="recent_post">
+                                                {blogs.map((blog) => (
+                                                    <BlogCardAlt
                                                         blog={blog}
                                                         key={blog._id}
                                                         handleClick={onClickBlogs}

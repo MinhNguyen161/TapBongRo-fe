@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css?family=Cabin+Condensed");
 @import url("https://fonts.googleapis.com/css?family=Righteous");
 @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 .Container {
   margin: 0;
@@ -103,7 +104,8 @@ this suppose to be copyright
 .home_page {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 120vh;
+
   background-image: url("./bg.gif");
   background-position: center;
   background-repeat: no-repeat;
@@ -170,7 +172,7 @@ this suppose to be copyright
   font-weight: bold;
 }
 .logo {
-  width: 80px;
+  width: 300px;
 }
 .logo_cart {
   width: 30px;
@@ -189,7 +191,7 @@ this suppose to be copyright
   width: 100%;
 }
 .join_us_nav {
-  background-color: #e76969 !important;
+  background-color: #ef760b !important;
 
   /* background-color: #ff5b16 !important; */
 }
@@ -201,6 +203,7 @@ this suppose to be copyright
 }
 .no_padding {
   padding: 0px;
+  min-height: 180vh;
   /* background: rgb(255, 255, 255);
   background: linear-gradient(
     144deg,
@@ -272,7 +275,7 @@ button#user-button {
 }
 
 .jumbo_blog_merch {
-  background-image: url("https://www.courtsoftheworld.com/blog/wp-content/uploads/2020/06/Venice-Beach-unsplash-scaled.jpg");
+  background-image: url("https://i.pinimg.com/originals/15/26/ba/1526ba78cd34f1638ed6e9cc352aff35.jpg");
   background-position: bottom;
   background-size: cover;
 }
@@ -297,7 +300,7 @@ button#user-button {
 }
 .no_decor_italics a {
   text-decoration: none;
-  color: white;
+  color: darkgray;
 }
 .jumbo_blog_about {
   display: flex;
@@ -326,5 +329,141 @@ button#user-button {
   background-image: url(./loading.gif);
 }
 .jumbo_blog_cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-image: url("https://img.budgettravel.com/_seoImage/foreign-currency.jpg?mtime=20190709095321");
+}
+.button_control {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.search_bar {
+  margin-top: 15px;
+}
+.width {
+  width: 100%;
+}
+.jumbo_blog_favo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("https://sportshub.cbsistatic.com/i/r/2020/08/19/4559ecf3-1fff-444f-8da5-4d11d99d18fc/thumbnail/1200x675/3e0c5a605832b112d8317f43952e0610/college-basketball-balls.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.remove_button {
+  background-color: transparent !important;
+  border: none;
+}
+span:hover {
+  cursor: pointer;
+}
+.voting {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 50px 0px;
+}
+h5 {
+  font-size: 29px;
+  color: white !important;
+  font-family: "Permanent Marker", cursive;
+}
+.Dribbling {
+  height: 200px;
+  width: 100%;
+  background-image: url("https://d33wubrfki0l68.cloudfront.net/8a51fe0df867747ca82b7c5d0f0079e5c3dec0ac/dab86/files/2013/05/nba-american-basketball-miami-heat-dwyane-wade-la-lakers-kobe-bryant.jpg");
+  background-position: right;
+  background-size: cover;
+  color: wheat;
+  margin: 15px 15px;
+}
+.Shooting {
+  height: 200px;
+  width: 100%;
+  background-color: turquoise;
+  background-image: url("https://d3j2bju5c7tc02.cloudfront.net/2017_41/cropped-dreamstime_s_14204675.jpg");
+  background-position: center;
+  background-size: cover;
+  color: wheat;
+  margin: 15px 15px;
+}
+.Screens {
+  height: 200px;
+  width: 100%;
+  background-image: url("https://upl.stack.com/wp-content/uploads/2012/12/Ball-Screen-629x498.jpg");
+  background-position: center;
+  background-size: cover;
+  color: wheat;
+  margin: 15px 15px;
+}
+.Situations {
+  height: 200px;
+  margin: 15px 15px;
+  width: 100%;
+  background-image: url("https://scontent.fvca1-1.fna.fbcdn.net/v/t1.15752-9/124570327_278255083610879_8783473717464006921_n.png?_nc_cat=108&ccb=2&_nc_sid=ae9488&_nc_ohc=iNYFoKygSDcAX9XQQgN&_nc_ht=scontent.fvca1-1.fna&oh=0d343ad42013fae4dddfd19913a84716&oe=5FD4FB62");
+  background-position: center;
+  background-size: cover;
+  color: wheat;
+}
+.Isolation {
+  height: 200px;
+  margin: 15px 15px;
+  width: 100%;
+  background-image: url("https://scontent.fvca1-2.fna.fbcdn.net/v/t1.15752-9/s2048x2048/124616462_4954969911180609_6407020199027990096_n.jpg?_nc_cat=107&ccb=2&_nc_sid=ae9488&_nc_ohc=_1XcasXB3yUAX90Ordb&_nc_ht=scontent.fvca1-2.fna&tp=7&oh=485a612dab7c32061b74eb4a86b78c31&oe=5FD39654");
+  background-position: center;
+  background-size: cover;
+  color: wheat;
+}
+.Finishing {
+  height: 200px;
+  margin: 15px 15px;
+
+  width: 100%;
+  background-image: url("https://mk0basketballhq3nk0m.kinstacdn.com/wp-content/uploads/2016/06/Wizards-Cavaliers-Bas_News.jpg");
+  background-position: center;
+  background-size: cover;
+  color: wheat;
+}
+.HoopCourt {
+  height: 200px;
+  margin: 15px 15px;
+
+  width: 100%;
+  background-image: url("https://i.pinimg.com/originals/03/07/99/030799e840098100ba59113b2971392b.jpg");
+  background-position: center;
+  background-size: cover;
+  color: wheat;
+}
+.Story {
+  height: 200px;
+  margin: 15px 15px;
+
+  width: 100%;
+  background-image: url("https://lsusports.net/images/2017/9/10/RFUWXQJIAIYOGZZ.20170910043421.jpg");
+  background-position: center;
+  background-size: cover;
+  color: wheat;
+}
+.category_overlay {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100%;
+  background-color: rgba(138, 138, 138, 0.432);
+}
+.jumbo_blog_category {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("https://miro.medium.com/max/2600/0*AaT8J6KjeATs8hBP.");
+  background-position: center;
+  background-size: cover;
+}
+.no_padding_card {
+  padding: 0 !important;
 }

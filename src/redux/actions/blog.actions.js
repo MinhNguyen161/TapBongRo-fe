@@ -4,10 +4,10 @@ import { message } from "antd";
 import { routeActions } from "./route.actions"
 
 
-const createNewBlog = (title, content, images, redirectTo = "__GO_BACK__") => async (dispatch) => {
+const createNewBlog = (title, content, pictureUrl, tag, redirectTo = "__GO_BACK__") => async (dispatch) => {
     dispatch({ type: types.CREATE_BLOG_REQUEST, payload: null });
     try {
-        const res = await api.post("/blogs", { title, content, images });
+        const res = await api.post("/blogs", { title, content, pictureUrl, tag });
         dispatch({
             type: types.CREATE_BLOG_SUCCESS,
             payload: res.data.data,
@@ -97,6 +97,34 @@ const createReview = (blogId, reviewText) => async (dispatch) => {
     }
 };
 
+const upVote = (blogId) => async (dispatch) => {
+    dispatch({ type: types.UPVOTE_FAILURE, payload: null });
+    try {
+        const res = await api.post(`/blogs/upvote/${blogId}`, {})
+        dispatch({
+            type: types.UPVOTE_SUCCESS,
+            payload: res.data.data,
+        });
+    } catch (err) {
+        console.log(err.message)
+        dispatch({ type: types.UPVOTE_FAILURE, payload: err });
+    }
+};
+const downVote = (blogId) => async (dispatch) => {
+    dispatch({ type: types.UPVOTE_FAILURE, payload: null });
+    try {
+        const res = await api.post(`/blogs/downvote/${blogId}`, {})
+        dispatch({
+            type: types.UPVOTE_SUCCESS,
+            payload: res.data.data,
+        });
+    } catch (err) {
+        console.log(err.message)
+        dispatch({ type: types.UPVOTE_FAILURE, payload: err });
+    }
+};
+
+
 
 export const blogActions = {
     createNewBlog,
@@ -104,7 +132,9 @@ export const blogActions = {
     deleteBlog,
     getDetail,
     getBlogs,
-    createReview
+    createReview,
+    upVote,
+    downVote,
 };
 
 

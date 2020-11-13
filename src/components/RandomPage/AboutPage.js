@@ -19,7 +19,7 @@ const AboutPage = () => {
             <Jumbotron className="text-center jumbo_blog_about">
                 <div className="no_decor_italics">
                     <Link to={`/`} >Home </Link>
-                    <Link >{`>>>`} </Link>
+                    {`>>>`}
                     <Link to={`/blogs`}> About</Link>
                 </div>
                 <h1 className="big_text_jumbo">About</h1>

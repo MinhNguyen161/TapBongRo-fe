@@ -4,6 +4,7 @@ const initialState = {
     totalPageNum: 1,
     selectedProduct: null,
     loading: false,
+    favs: []
 };
 
 const productReducer = (state = initialState, action) => {
@@ -18,6 +19,7 @@ const productReducer = (state = initialState, action) => {
         case types.UPDATE_PRODUCT_REQUEST:
         case types.DELETE_PRODUCT_REQUEST:
         case types.GET_PRODUCT_REQUEST:
+        case types.GET_FAV_REQUEST:
         case types.GET_DETAIL_REQUEST:
             return { ...state, loading: true };
         // SUCCESS CASES
@@ -49,12 +51,18 @@ const productReducer = (state = initialState, action) => {
                 products: payload.products,
                 totalPageNum: payload.totalPages
             }
-
+        case types.GET_FAV_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                favs: payload,
+            }
         // FAIL CASES
         //=======================================================
 
         case types.CREATE_PRODUCT_FAILURE:
         case types.UPDATE_PRODUCT_FAILURE:
+        case types.GET_FAV_FAILURE:
         case types.DELETE_PRODUCT_FAILURE:
         case types.GET_DETAIL_FAILURE:
         case types.GET_PRODUCT_FAILURE:

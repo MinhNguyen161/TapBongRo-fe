@@ -15,6 +15,8 @@ import MerchPage from "../containers/MerchPage"
 import CheckOutPage from "../containers/CheckOutPage";
 import LoadingPage from "../components/LoadingPage";
 import AddEditBlogPage from "../components/addEditPage/AddEditBlogs";
+import FavPage from "../containers/FavPage";
+import CategoryPage from "../components/RandomPage/CategoryPage";
 
 
 const PublicRoutes = () => {
@@ -25,11 +27,15 @@ const PublicRoutes = () => {
                 <Route exact path="/login" component={LoginPage} />
                 <Route exact path="/register" component={RegisterPage} />
                 <Route exact path="/blogs" component={BlogPage} />
+                <Route exact path="/favorites" component={FavPage} />
                 <Route exact path="/about" component={AboutPage} />
                 <Route exact path="/merch/:id" component={MerchDetailPage} />
                 <Route exact path="/merch" component={MerchPage} />
                 <Route exact path="/cart" component={CheckOutPage} />
+                <Route exact path="/category" component={CategoryPage} />
+                <Route exact path="/category/:id" component={BlogPage} />
                 <Route exact path="/loading" component={LoadingPage} />
+
                 <AdminRoute exact path="/blogs/add" component={AddEditBlogPage} />
                 <AdminRoute
                     exact

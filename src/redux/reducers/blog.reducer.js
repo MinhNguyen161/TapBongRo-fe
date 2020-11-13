@@ -14,6 +14,8 @@ const blogReducer = (state = initialState, action) => {
         //=======================================================
         //...
         case types.CREATE_REVIEW_REQUEST:
+        case types.UPVOTE_REQUEST:
+        case types.DOWNVOTE_REQUEST:
         case types.CREATE_BLOG_REQUEST:
         case types.UPDATE_BLOG_REQUEST:
         case types.DELETE_BLOG_REQUEST:
@@ -59,10 +61,23 @@ const blogReducer = (state = initialState, action) => {
                     reviews: [...state, state.selectedBlog.reviews, payload]
                 }
             }
-
+        case types.UPVOTE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                selectedBlog: payload,
+            }
+        case types.DOWNVOTE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                selectedBlog: payload,
+            }
         // FAIL CASES
         //=======================================================
         case types.CREATE_REVIEW_FAILURE:
+        case types.UPVOTE_FAILURE:
+        case types.DOWNVOTE_FAILURE:
         case types.CREATE_BLOG_FAILURE:
         case types.UPDATE_BLOG_FAILURE:
         case types.DELETE_BLOG_FAILURE:

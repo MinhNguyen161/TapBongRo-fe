@@ -98,12 +98,41 @@ const getProducts = (activePage, limit = 10) => async (dispatch) => {
     }
 };
 
+const addRemoveFromFav = (id) => async (dispatch) => {
+    dispatch({ type: types.ADD_FAV_REQUEST, payload: null });
+    try {
+        const res = await api.post(`/favs/${id}`, {});
+        dispatch({
+            type: types.CREATE_PRODUCT_SUCCESS,
+            payload: res.data.data,
+        });
+        message.success(`Add/Remove Product success!`);
+    } catch (err) {
+        dispatch({ type: types.ADD_FAV_FAILURE, payload: err.message })
+        console.log(err.message)
+    }
+}
+const getFavs = () => async (dispatch) => {
+    dispatch({ type: types.GET_FAV_REQUEST, payload: null });
+    try {
+        const res = await api.get("/favs/content");
+        dispatch({
+            type: types.GET_FAV_SUCCESS,
+            payload: res.data.data,
+        })
+    }
+    catch (err) {
+        dispatch({ type: types.GET_FAV_FAILURE, payload: err.message })
+    }
+}
 export const productActions = {
     createNewProduct,
     updateProduct,
     deleteProduct,
     getDetail,
     getProducts,
+    addRemoveFromFav,
+    getFavs,
 };
 
 

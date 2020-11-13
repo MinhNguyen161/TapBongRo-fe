@@ -31,8 +31,9 @@ const ReviewForm = ({
             Submitting...
                     </Button>
                 ) : (
-                        <Button type="submit" disabled={!reviewText}>
-                            Submit
+                        <Button type="submit" variant="light" disabled={!reviewText}>
+                            <a className="btn btn-dark rounded-pill py-2 btn-block">Submit</a>
+
                         </Button>
                     )}
             </Form.Group>

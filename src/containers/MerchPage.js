@@ -24,6 +24,7 @@ const MerchPage = () => {
         dispatch(productActions.getProducts(pageNum));
         console.log("get products")
         dispatch(cartActions.getCart());
+        dispatch(productActions.getFavs())
     }, [dispatch, pageNum])
     const onClickProducts = (id) => {
         history.push(`/merch/${id}`);
@@ -38,15 +39,16 @@ const MerchPage = () => {
             <NavBarRo />
             <NavBarJoinUs />
             <Jumbotron className="text-center jumbo_blog_merch">
-                <div className="no_decor_italics">
-                    <Link to={`/`} >Home </Link>
-                    <Link >{`>>>`} </Link>
-                    <Link to={`/blogs`}> Merch</Link>
-                </div>
+
                 <h1 className="big_text_jumbo">Merch</h1>
             </Jumbotron>
 
             <Container fluid className="featured">
+                <div className="no_decor_italics">
+                    <Link to={`/`} >Home </Link>
+                    {`>>>`}
+                    <Link to={`/blogs`}> Merch</Link>
+                </div>
                 <h1> Featured Item</h1>
 
 

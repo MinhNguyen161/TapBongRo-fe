@@ -1,9 +1,9 @@
 import BlogCard from "../components/Cards/BlogCard";
 import PaginationBar from "../components/PaginationBar";
 import React, { useEffect, useState } from "react";
-import { CardColumns, Container, Jumbotron } from "react-bootstrap";
+import { CardColumns, Container, Jumbotron, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { blogActions } from "../redux/actions";
 import NavBarRo from "../components/NavBars/NavBarRo"
@@ -11,7 +11,9 @@ import NavBarJoinUs from "../components/NavBars/NavBarJoinUs"
 import LoadingPage from "../components/LoadingPage";
 
 const BlogPage = () => {
+    const params = useParams();
     const user = useSelector(state => state.auth.user)
+    const [isLoading, setLoading] = useState(false)
     const [pageNum, setPageNum] = useState(1);
     const loading = useSelector((state) => state.blog.loading);
     const blogs = useSelector((state) => state.blog.blogs);
@@ -24,6 +26,17 @@ const BlogPage = () => {
     const onClickBlogs = (id) => {
         history.push(`/blogs/${id}`);
     }
+    const upVote = (id) => {
+        dispatch(blogActions.upVote(id))
+        dispatch(blogActions.getBlogs(pageNum));
+
+    }
+
+    const downVote = (id) => {
+        dispatch(blogActions.downVote(id))
+        dispatch(blogActions.getBlogs(pageNum));
+
+    }
     const [ani, setAni] = useState(true)
     setTimeout(() => setAni(false), 1000)
     if (ani) return (<LoadingPage />)
@@ -32,29 +45,43 @@ const BlogPage = () => {
             <NavBarRo />
             <NavBarJoinUs />
             <Jumbotron className="text-center jumbo_blog_blog">
+
+                <h1 className="big_text_jumbo">Hoopstudy</h1>
+            </Jumbotron>
+            <Container>
                 <div className="no_decor_italics">
                     <Link to={`/`} >Home </Link>
                     {`>>>`}
-                    <Link to={`/blogs`}> Hoopstudy</Link>
+                    <Link to={`/category`}> Category</Link>
+                    {`>>`}
+                    <Link to={`/category/${params.id}`}> {params.id}</Link>
                 </div>
-                <h1 className="big_text_jumbo">Hoopstudy</h1>
-            </Jumbotron>
+            </Container>
+
             <Container className="blog_container">
+
                 <PaginationBar
                     pageNum={pageNum}
                     setPageNum={setPageNum}
                     totalPageNum={totalPageNum}
                     loading={loading}
                 />
-                <CardColumns>
-                    {blogs.map((blog) => (
-                        <BlogCard
-                            blog={blog}
-                            key={blog._id}
-                            handleClick={onClickBlogs}
-                        />
-                    ))}
-                </CardColumns>
+                {loading ? (<div> Please wait... </div>) :
+                    (<CardColumns>
+                        {blogs.map((blog) => (
+                            <>
+                                <BlogCard
+                                    blog={blog}
+                                    key={blog._id}
+                                    handleClick={onClickBlogs}
+                                    upVote={upVote}
+                                    downVote={downVote}
+                                />
+
+                            </>
+                        ))}
+                    </CardColumns>)}
+
             </Container>
         </Container>
     )

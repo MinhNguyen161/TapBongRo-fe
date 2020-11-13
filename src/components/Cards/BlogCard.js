@@ -1,17 +1,18 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import Moment from "react-moment";
 
-const BlogCard = ({ blog, handleClick, width }) => {
+const BlogCard = ({ blog, handleClick, width, downVote, upVote }) => {
     return (
-        <Card border="light" style={{ width: `${width}` }} onClick={() => handleClick(blog._id)}>
+        <Card border="light" style={{ width: `${width}` }} >
             <Card.Img
                 variant="top"
                 src={
                     blog?.pictureUrl?.length
                         ? blog.pictureUrl[0]
-                        : "https://via.placeholder.com/160x100"
+                        : "https://via.placeholder.com/188x106"
                 }
+                onClick={() => handleClick(blog._id)}
             />
             <Card.Body>
                 <Card.Title>{blog.title}</Card.Title>
@@ -24,11 +25,24 @@ const BlogCard = ({ blog, handleClick, width }) => {
             <Card.Footer>
                 <small className="text-muted">
                     <span className="text-muted">
-                        @{blog?.author?.name} wrote{" "}
+
                         <Moment fromNow>{blog.createdAt}</Moment>
                     </span>
                 </small>
             </Card.Footer>
+            <div className="voting">
+                <Button
+                    variant="warning"
+                    size="sm"
+                    onClick={() => upVote(blog._id)}
+                >UPVOTE</Button>
+                {blog?.likeCount}
+                <Button
+                    variant="outline-warning"
+                    size="sm"
+                    onClick={() => downVote(blog._id)}
+                >DOWNVOTE</Button>
+            </div>
         </Card>
     );
 };

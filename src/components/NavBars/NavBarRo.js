@@ -8,19 +8,20 @@ const NavBarO = () => {
     const history = useHistory()
     const isAuthorized = useSelector((state) => state.auth.isAuthorized);
 
+
     return (
         <Container fluid className="nav_bar spacing">
             <Row className="nav_content">
                 <Col lg={4} md={4} className="left_content">
                     <Link to="/">
-                        <img src="/images/logo.png" alt="logo" className="logo" />
+                        <img src="/images/logo1.png" alt="logo" className="logo" />
                     </Link>
 
                 </Col>
                 <Col lg={8} md={8} className="right_content">
                     <ul className="nav_bar_links">
                         <li> <span onClick={() => history.push("/about")} > About</span></li>
-                        <li> <span onClick={() => history.push("/blogs")} > Hoopstudy </span></li>
+                        <li> <span onClick={() => history.push("/category")} > Hoopstudy </span></li>
                         <li> <span onClick={() => history.push("/merch")} > Merch </span></li>
 
                         <li> <span  > Training & Drills </span></li>

@@ -12,10 +12,12 @@ import { useHistory, useParams } from "react-router-dom";
 import { blogActions, routeActions } from "../../redux/actions"
 
 const AddEditBlogPage = () => {
+    const category = ["Dribbling", "Shooting", "Screens", "Situations", "Isolation", "Finishing", "HoopCourt", "Story"]
     const [formData, setFormData] = useState({
         title: "",
         content: "",
         images: ["http://placeimg.com/400/300", "http://placeimg.com/400/300"],
+        tag: ""
     });
     const loading = useSelector((state) => state.blog.loading);
     const dispatch = useDispatch();
@@ -45,9 +47,9 @@ const AddEditBlogPage = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { title, content, images } = formData;
+        const { title, content, images, tag } = formData;
         if (addOrEdit === "Add") {
-            dispatch(blogActions.createNewBlog(title, content, images));
+            dispatch(blogActions.createNewBlog(title, content, images, tag));
         } else if (addOrEdit === "Edit") {
             dispatch(
                 blogActions.updateBlog(selectedBlog._id, title, content, images)
@@ -95,6 +97,7 @@ const AddEditBlogPage = () => {
                                 value={formData.title}
                                 onChange={handleChange}
                             />
+
                         </Form.Group>
                         <Form.Group>
                             <Form.Control
@@ -106,7 +109,13 @@ const AddEditBlogPage = () => {
                                 onChange={handleChange}
                             />
                         </Form.Group>
-
+                        <Form.Control
+                            as="select"
+                            placeholder="Tag"
+                            value={formData.tag}
+                        >
+                            {category.map((name) => <option> {name}</option>)}
+                        </Form.Control>
                         <ButtonGroup className="d-flex mb-3">
                             {loading ? (
                                 <Button
